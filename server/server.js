@@ -5,6 +5,7 @@ const { NotFoundError } = require("./utils/errors");
 const authRoutes = require("./routes/auth");
 const sleepRoutes = require("./routes/sleep_tracker");
 const { PORT } = require("./config");
+const security = require("./middleware/security");
 
 const app = express();
 
@@ -12,6 +13,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
+// for eveery request, check if a token exists in the authorization header
+// if it does, attach the decoded user to res.locals
+app.use(security.extractUserFromJwt);
 
 //! Routes
 app.use("/auth", authRoutes); //! this is a middleware too
