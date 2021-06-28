@@ -3,12 +3,16 @@ const jwt = require("jsonwebtoken");
 const { UnauthorizedError } = require("../utils/errors");
 
 // create a function to extrac the JWT from the reuquest header
-const jwtFrom = ({ header }) => {
-	//Authorization: "Bearer aalkfncjdhac"
-	const [scheme, token] = header.authorization.split(" ");
-	if (scheme.tim() === "Bearer") {
-		return token;
+const jwtFrom = ({ headers }) => {
+	if (headers?.authorization) {
+		//Authorization: "Bearer aalkfncjdhac"
+		const [scheme, token] = headers.authorization.split(" ");
+		if (scheme.trim() === "Bearer") {
+			return token;
+		}
 	}
+
+	return undefined;
 };
 
 //create a function to attch the user to the res object
@@ -17,8 +21,8 @@ const extractUserFromJwt = (req, res, next) => {
 		const token = jwtFrom(req);
 		// is this a valid token
 		if (token) {
-			//if it is a valid user, attach it to res.local.user
-			res.local.user = jwt.verify(token, SECRET_KEY);
+			//if it is a valid user, attach it to res.locals.user
+			res.locals.user = jwt.verify(token, SECRET_KEY);
 		}
 
 		return next();
