@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const { NotFoundError } = require("./utils/errors");
-//* const authRoutes = require("./routes/auth");
-//* const { PORT } = require("./config");
+const authRoutes = require("./routes/auth");
+const sleepRoutes = require("./routes/sleep_tracker");
+const { PORT } = require("./config");
 
 const app = express();
 
@@ -14,14 +15,15 @@ app.use(morgan("tiny"));
 
 //! Routes
 app.use("/auth", authRoutes); //! this is a middleware too
+app.use("/sleep", sleepRoutes); //! this is a middleware too
 
 //! Error handling
-//* This will handle all 404 Errors that were not matched by a route
+// This will handle all 404 Errors that were not matched by a route
 app.use((req, res, next) => {
 	return next(new NotFoundError());
 });
 
-//* Generic Error handler - anything that is unhandle wull be hnadled here
+// Generic Error handler - anything that is unhandle will be handled here
 app.use((error, req, res, next) => {
 	const status = error.status || 500;
 	message = error.message;
