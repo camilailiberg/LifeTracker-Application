@@ -77,6 +77,7 @@ class User {
 				lowercaseEmail,
 			]
 		);
+
 		const user = userResult.rows[0];
 
 		return User.makePublicUser(user);

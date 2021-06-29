@@ -7,13 +7,13 @@ CREATE TABLE users (
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
---! one to one:
--- a user can have one sleep_tracker
-CREATE TABLE sleep_tracker (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+-- -- one to one:
+-- -- a user can have one sleep_tracker
+-- CREATE TABLE sleep_tracker (
+--     id SERIAL PRIMARY KEY,
+--     user_id INTEGER NOT NULL,
+--     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+-- );
 
 
 --! one to many: 
@@ -22,6 +22,8 @@ CREATE TABLE single_sleep_tracker (
     id SERIAL PRIMARY KEY,
     bed_time TIMESTAMP NOT NULL,
     wake_up_time TIMESTAMP NOT NULL,
-    single_sleep_tracker_id INTEGER NOT NULL,
-    FOREIGN KEY (single_sleep_tracker_id) REFERENCES sleep_tracker(id) ON DELETE CASCADE
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+    -- single_sleep_tracker_id INTEGER NOT NULL,
+    -- FOREIGN KEY (single_sleep_tracker_id) REFERENCES sleep_tracker(id) ON DELETE CASCADE
