@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Sleep = require("../models/sleep_tracker");
 const security = require("../middleware/security");
+const permissions = require("../middleware/permissions");
 
 // create a sleep data
 router.post(
@@ -38,8 +39,23 @@ router.get(
 	async (req, res, next) => {
 		try {
 			const { user } = res.locals;
-			// const { userId } = req.params;
 			const sleepDataForUser = await Sleep.listSleepDataSingleUser(user);
+			return res.status(200).json({ sleepDataForUser });
+		} catch (err) {
+			next(err);
+		}
+	}
+);
+
+// geta all sleep data for a single user.
+router.get(
+	"/:userId",
+	security.requireAuthenticatedUser,
+	permissions.authedUserOwnSleepData,
+	async (req, res, next) => {
+		try {
+			const { userId } = req.params;
+			const sleepDataForUser = await Sleep.fetchSleepDataByUserId(userId);
 			return res.status(200).json({ sleepDataForUser });
 		} catch (err) {
 			next(err);
