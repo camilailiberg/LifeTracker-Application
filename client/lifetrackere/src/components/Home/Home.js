@@ -6,7 +6,10 @@ function Home() {
 	return (
 		<div className="Home">
 			<div className="hero">
-				<img src="" alt="hero img" />
+				<img
+					src="https://2rdnmg1qbg403gumla1v9i2h-wpengine.netdna-ssl.com/wp-content/uploads/sites/3/2013/09/inexpensiveExercise-1277759983-770x533-1-650x428.jpg"
+					alt="hero img"
+				/>
 				<h1>Life Tracker</h1>
 				<p>Helping you get back control of your world</p>
 			</div>

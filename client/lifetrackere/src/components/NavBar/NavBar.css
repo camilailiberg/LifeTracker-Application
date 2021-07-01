@@ -48,8 +48,8 @@
 	background-color: #000;
 	height: 80px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .menu-bars {
@@ -77,7 +77,7 @@
 
 .nav-text {
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 	padding: 8px 0px 8px 16px;
 	list-style: none;
@@ -110,7 +110,7 @@
 	width: 100%;
 	height: 80px;
 	display: flex;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 }
 
@@ -124,4 +124,24 @@ span {
 .activities a {
 	text-decoration: none;
 	color: white;
+}
+
+.loginSignupLogout {
+	display: flex;
+}
+
+.loginSignupLogout a {
+	text-decoration: none;
+	color: white;
+}
+
+.navbar .loginSignupLogout span {
+	color: white;
+}
+
+.logout {
+	margin-left: 2rem;
+	font-size: 2rem;
+	background: none;
+	cursor: pointer;
 }

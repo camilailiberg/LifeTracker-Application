@@ -5,32 +5,43 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SleepData from "../SleepData/SleepData";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import apiClient from "../../services/apiClient";
 import { useEffect, useState } from "react";
+import apiClient from "../../services/apiClient";
 
 function App() {
 	//need to useEffect here to get sleep data and pass it to SleepData Component
 	const [user, setUser] = useState({});
-	const [sleepInfo, setSleepInfo] = useState([]);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const fetchSleepInfo = async () => {
-			const sleepInfo = await apiClient.getSleepData();
-			console.log("fetchSleepData", sleepInfo); //TODO: Delete comment
-			setSleepInfo(sleepInfo);
+		const fetchUser = async () => {
+			const { data, error } = await apiClient.fetchUserFromToken();
+			if (data) setUser(data.user);
+			if (error) setError(error);
 		};
 
-		fetchSleepInfo();
-	}, []);
+		const token = localStorage.getItem("lifetracker_token");
+		if (token) {
+			apiClient.setToken(token);
+			fetchUser();
+		}
+	});
+
+	const handleLogout = async () => {
+		await apiClient.logoutUser();
+		setUser({});
+		setError(null);
+	};
+
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<NavBar />
+				<NavBar user={user} handleLogout={handleLogout} />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route
 						path="/sleep/my-sleep-data"
-						element={<SleepData sleepInfo={sleepInfo} />}
+						element={<SleepData user={user} />}
 					/>
 					<Route
 						path="/login"

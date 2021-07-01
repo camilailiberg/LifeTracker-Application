@@ -1,25 +1,56 @@
 import "./NavBar.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { IconContext } from "react-icons";
+import * as FaIcons from "react-icons/fa";
 
-function NavBar() {
+function NavBar({ user, handleLogout }) {
 	return (
-		<div className="navbar">
-			<div class="activities">
-				<Link to="/" className="menu-bars">
-					Activity
-				</Link>
-				<Link to="/" className="menu-bars">
-					Excersise
-				</Link>
-				<Link to="/" className="menu-bars">
-					Nutrition
-				</Link>
-				<Link to="/sleep/my-sleep-data" className="menu-bars">
-					Sleep
-				</Link>
+		<IconContext.Provider value={{ color: "#fff" }}>
+			<div className="navbar">
+				<div className="loginSignupLogout">
+					<div className="menu-bars">
+						<a href="/">
+							<FaIcons.FaLemon />
+						</a>
+					</div>
+					{Object.keys(user).length !== 0 ? (
+						<>
+							<span className="menu-bars">
+								Welcome {user.first_name} {user.last_name} !
+							</span>
+							<span className="logout" onClick={handleLogout}>
+								Logout
+							</span>
+						</>
+					) : (
+						<>
+							<Link to="/login" className="menu-bars">
+								Login
+							</Link>
+
+							<Link to="/create-new-account" className="menu-bars">
+								Sign Up
+							</Link>
+						</>
+					)}
+				</div>
+				<div class="activities">
+					<Link to="/" className="menu-bars">
+						Activity
+					</Link>
+					<Link to="/" className="menu-bars">
+						Excersise
+					</Link>
+					<Link to="/" className="menu-bars">
+						Nutrition
+					</Link>
+					<Link to="/sleep/my-sleep-data" className="menu-bars">
+						Sleep
+					</Link>
+				</div>
 			</div>
-		</div>
+		</IconContext.Provider>
 	);
 }
 
