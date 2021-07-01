@@ -61,25 +61,25 @@ class Sleep {
 		return results.rows;
 	}
 
-	//list all sleep data for a single user in decending order by when they were created.
-	static async fetchSleepDataByUserId(userId) {
-		const results = await db.query(
-			`
-				SELECT s.id,
-						s.user_id,
-						s.bed_time,
-						s.wake_up_time,
-						u.email AS "userEmail"                 
-				FROM single_sleep_tracker as s
-					JOIN users AS u ON u.id = s.user_id
-				WHERE s.user_id = $1
-				ORDER BY s.id DESC
-			`,
-			[userId]
-		);
+	// //list all sleep data for a single user in decending order by when they were created.
+	// static async fetchSleepDataByUserId(userId) {
+	// 	const results = await db.query(
+	// 		`
+	// 			SELECT s.id,
+	// 					s.user_id,
+	// 					s.bed_time,
+	// 					s.wake_up_time,
+	// 					u.email AS "userEmail"
+	// 			FROM single_sleep_tracker as s
+	// 				JOIN users AS u ON u.id = s.user_id
+	// 			WHERE s.user_id = $1
+	// 			ORDER BY s.id DESC
+	// 		`,
+	// 		[userId]
+	// 	);
 
-		return results.rows;
-	}
+	// 	return results.rows;
+	// }
 
 	//updates a sleep datat for a user
 	static async updateSleepData(id) {}
