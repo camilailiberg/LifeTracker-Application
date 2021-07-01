@@ -61,6 +61,7 @@ class Sleep {
 		return results.rows;
 	}
 
+	//list all sleep data for a single user in decending order by when they were created.
 	static async fetchSleepDataByUserId(userId) {
 		const results = await db.query(
 			`
