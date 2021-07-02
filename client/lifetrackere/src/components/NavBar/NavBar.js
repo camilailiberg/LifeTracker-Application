@@ -16,9 +16,7 @@ function NavBar({ user, handleLogout }) {
 					</div>
 					{Object.keys(user).length !== 0 ? (
 						<>
-							<span className="menu-bars">
-								Welcome {user.first_name} {user.last_name} !
-							</span>
+							<span className="menu-bars">Welcome {user.user_name} !</span>
 							<span className="logout" onClick={handleLogout}>
 								Logout
 							</span>
@@ -36,7 +34,7 @@ function NavBar({ user, handleLogout }) {
 					)}
 				</div>
 				<div class="activities">
-					<Link to="/" className="menu-bars">
+					<Link to="/activity" className="menu-bars">
 						Activity
 					</Link>
 					<Link to="/" className="menu-bars">

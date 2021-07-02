@@ -3,4 +3,11 @@
 }
 .sleepDetail {
 	display: flex;
+	flex-wrap: wrap;
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

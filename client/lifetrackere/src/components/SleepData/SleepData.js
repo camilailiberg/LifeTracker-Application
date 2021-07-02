@@ -3,6 +3,7 @@ import React from "react";
 import SleepDetail from "../SleepDetail/SleepDetail";
 import apiClient from "../../services/apiClient";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function SleepData({ user }) {
 	const [sleepInfo, setSleepInfo] = useState([]);
@@ -33,7 +34,16 @@ function SleepData({ user }) {
 		<div className="SleepData">
 			<h1>Sleep</h1>
 			<div className="Overview">
-				<h1>Overview</h1>
+				<div className="top">
+					<h1>Overview</h1>
+					{Object.keys(user).length === 0 ? (
+						<></>
+					) : (
+						<Link to="/add-sleep-data">
+							<button className="addSleep">Add Sleep</button>
+						</Link>
+					)}
+				</div>
 				<div className="sleepDetail">
 					{Object.keys(user).length !== 0 ? (
 						sleepInfo.map((singleSleepInfo) => (
@@ -43,10 +53,8 @@ function SleepData({ user }) {
 							/>
 						))
 					) : (
-						<h1> You need to be logged in </h1>
+						<h1> You need to be logged in to see or add sleep data </h1>
 					)}
-					{/* <SleepDetail />
-					<SleepDetail /> */}
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,8 @@
 import "./App.css";
 import Home from "../Home/Home";
 import NavBar from "../NavBar/NavBar";
+import SleepForm from "../SleepForm/SleepForm";
+import Activity from "../Activity/Activity";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SleepData from "../SleepData/SleepData";
 import Login from "../Login/Login";
@@ -25,7 +27,7 @@ function App() {
 			apiClient.setToken(token);
 			fetchUser();
 		}
-	});
+	}, []);
 
 	const handleLogout = async () => {
 		await apiClient.logoutUser();
@@ -51,6 +53,11 @@ function App() {
 						path="/create-new-account"
 						element={<Register user={user} setUser={setUser} />}
 					/>
+					<Route
+						path="/add-sleep-data"
+						element={<SleepForm user={user} setUser={setUser} />}
+					/>
+					<Route path="/activity" element={<Activity user={user} />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

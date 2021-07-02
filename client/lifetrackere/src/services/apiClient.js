@@ -43,6 +43,14 @@ class ApiClient {
 		}
 	}
 
+	async addSleepData(credentials) {
+		return await this.request({
+			endpoint: `sleep/create`,
+			method: `POST`,
+			data: credentials,
+		});
+	}
+
 	async getSleepData() {
 		return await this.request({
 			endpoint: `sleep/my-sleep-data`,

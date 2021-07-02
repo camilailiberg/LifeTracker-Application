@@ -61,6 +61,7 @@ export default function Register({ user, setUser }) {
 		const { data, error } = await apiClient.signupUser({
 			first_name: form.firstName,
 			last_name: form.lastName,
+			user_name: form.userName,
 			email: form.email,
 			password: form.password,
 		});
@@ -101,6 +102,17 @@ export default function Register({ user, setUser }) {
 							name="lastName"
 							placeholder="Enter your last name"
 							value={form.lastName}
+							onChange={handleOnInputChange}
+						/>
+					</div>
+
+					<div className="input-field">
+						<label htmlFor="userName">User Name</label>
+						<input
+							type="text"
+							name="userName"
+							placeholder="Enter your user name"
+							value={form.userName}
 							onChange={handleOnInputChange}
 						/>
 					</div>
