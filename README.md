@@ -38,23 +38,23 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<img src="/gifts/Demo_Part_1.gif" width=250><br>
+<img src="/gifts/Demo_Part_2.gif" width=250><br>
+<img src="/gifts/Demo_Part_3.gif" width=250><br>
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+[Yes, the topics presented in the labs did prepared me to complete the assignments. I felt prepared to complete all the features from my assignmnet except the depoiment requirement]
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+[If I had more time, I would have made the website look nicer, and put more effort into the front end. I would have also try to have all of the activities tracker, intead of only having the one required.]
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+[I think that one thing that when well was that overall I was able to have all required features adn be able to create a full stack website from scratch. There were not things that did not go as planned. Something that I noticed that my peers did was use Material UI in their front end, and I would like to try using it nex time.]
 
 ### Open-source libraries used
 
@@ -64,4 +64,7 @@ Implement any of the following features to improve the application:
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-[Add your response here]
+[
+Shout out to Matt for always giving extra lectures or just explaining things in more detail.
+Shout out to Robert Velasco and Jungah Ahn for being such a great team.
+]
