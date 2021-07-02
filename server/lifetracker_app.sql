@@ -2,6 +2,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
     email TEXT NOT NULL UNIQUE CHECK(POSITION('@' IN email) > 1),
     password TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()

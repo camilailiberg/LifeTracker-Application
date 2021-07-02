@@ -13,6 +13,10 @@ class Sleep {
 			}
 		});
 
+		if (sleepData.wake_up_time < sleepData.bed_time) {
+			throw new BadRequestError(`End time must be after start time.`);
+		}
+
 		const results = await db.query(
 			`
 				INSERT INTO single_sleep_tracker (bed_time, wake_up_time, user_id) VALUES ($1, $2, (SELECT id FROM users WHERE email = $3)) RETURNING bed_time, wake_up_time, user_id;
@@ -53,7 +57,7 @@ class Sleep {
 						s.wake_up_time
 				FROM single_sleep_tracker as s
 				WHERE s.user_id = $1
-				ORDER BY s.id DESC
+				ORDER BY s.bed_time DESC
 			`,
 			[userId.rows[0].id]
 		);
